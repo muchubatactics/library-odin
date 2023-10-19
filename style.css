@@ -77,6 +77,8 @@ img {
     font-size: 0.7rem;
     border-radius: 0px;
     border: 0px;
+    position: sticky;
+    top: 4.5rem;
 }
 
 .add-btn:hover {
