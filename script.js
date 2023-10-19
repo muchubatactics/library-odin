@@ -92,7 +92,6 @@ function displayBooks()
                     xxx.remove();
                 }
                 let yy = document.querySelectorAll('[data-index]');
-                console.log(yy);
                 let count = 0, value = 0;
                 for (let y of yy)
                 {
