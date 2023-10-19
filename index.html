@@ -17,7 +17,30 @@
         <button class="add-btn">Add Book</button>
     </div>
     <dialog>
-        <h1>hehehehehe</h1>
+        <div class="head">
+            <h2>Enter the details</h2>
+            <button class="close-dialog">x</button>
+        </div>
+        <form class="form">
+            <div class="for-style">
+                <label for="title">Title:</label>
+                <input class="text" name="title" id="title" required>
+            </div>
+            <div class="for-style">
+                <label for="author">Author:</label>
+                <input class="text" name="author" id="author" required>
+            </div>
+            <div class="for-style">
+                <label for="pages">Page count:</label>
+                <input class="number" pattern="\d+" name="pages" id="pages" required>
+            </div>
+            <div>
+                <legend>Have you read the book yet?</legend>
+                <label><input type="radio" name="is-read" value="yes"  required/> Yes</label>
+                <label><input type="radio" name="is-read" value="no"  required/> No</label>
+            </div>
+            <div class="btn"><button type="submit" class="submit-button">Add book</button></div>
+        </form>
     </dialog>
 
 </body>

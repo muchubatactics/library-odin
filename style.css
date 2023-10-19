@@ -87,6 +87,71 @@ img {
 }
 
 ::backdrop {
-    background-color: gray;
+    background-color: rgb(235, 235, 235);
     opacity: 0.75;
+}
+
+dialog {
+    border: 0px;
+    border-radius: 20px;
+    padding: 3rem;
+}
+
+dialog h2 {
+    margin: 0px;
+}
+
+dialog .btn {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+dialog button {
+    margin-top: 2rem;
+    background-color: whitesmoke;
+    font-weight: 500;
+    width: 5rem;
+    height: 2rem;
+    font-size: 0.7rem;
+    border-radius: 10px;
+    border: 0px;
+}
+
+dialog button:hover {
+    background-color: rgb(85, 85, 85);
+    color: white;
+}
+
+.close-dialog {
+    margin: 0px;
+    background-color: red;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.close-dialog:hover {
+    background-color: brown;
+}
+
+.for-style {
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 5px;
+}
+
+.for-style input {
+    font-family: 'Inter', sans-serif;
+    font-size: 70%;
+}
+
+dialog .head {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
 }

@@ -25,6 +25,7 @@ let bookGrid = document.querySelector(".lib-grid");
 function addBookToLibrary(title, author, pages, isRead)
 {
     myLibrary.push(new Book(title, author, pages, isRead));
+    displayBooks();
 }
 
 function displayBooks()
@@ -66,8 +67,34 @@ function displayBooks()
 
 displayBooks();
 
-let form = document.querySelector("dialog");
+let dialog = document.querySelector("dialog");
 let addButton = document.querySelector(".add-btn");
 addButton.addEventListener("click", () => {
-    form.showModal();
+    dialog.showModal();
+});
+
+let closeButton = document.querySelector(".close-dialog");
+closeButton.addEventListener("click", () => {
+    dialog.close();
+});
+
+let form = document.querySelector(".form");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = Number(document.getElementById("pages").value);
+    let isReadbool;
+    let x = document.getElementsByName("is-read");
+    for (let i = 0; i < x.length; i++)
+    {
+        if (x[i].checked)
+        {
+            if (x[i].value == "yes") isReadbool = true;
+            else isReadbool = false;
+        }
+    }
+    addBookToLibrary(title, author, pages, isReadbool);
+    dialog.close();
+
 });
