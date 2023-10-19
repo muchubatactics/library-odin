@@ -1,6 +1,3 @@
-let myLibrary = [];
-let bookGrid = document.querySelector(".lib-grid");
-
 function Book(title, author, pages, isRead)
 {
     this.title = title;
@@ -16,6 +13,13 @@ Book.prototype.info = function(){
     else str += "not read yet.";
     return str;
 }
+let myLibrary = [ 
+    new Book("The Power Of Now", "Edgar Muyomba",304, false), 
+    new Book("Can't Hurt Me", "David Goggins", 334, true), 
+    new Book("The Psychology Of Money","Ssenono Jordan", 524, true),
+];
+let bookGrid = document.querySelector(".lib-grid");
+
 
 
 function addBookToLibrary(title, author, pages, isRead)
@@ -25,11 +29,45 @@ function addBookToLibrary(title, author, pages, isRead)
 
 function displayBooks()
 {
-    for (let x in myLibrary)
+    for (let x of myLibrary)
     {
+        console.log(x);
         if (!x.isDisplayed)
         {
-        
+            let a = document.createElement("div");
+            a.classList.add("image");
+            let image = document.createElement("img");
+            image.setAttribute("src", `https://source.unsplash.com/random/200x200?sig=${Math.random()}`);
+            a.appendChild(image);
+            let b = document.createElement("div");
+            let title = document.createElement("div");
+            title.classList.add("title");
+            title.textContent = String(x.title);
+            let author = document.createElement("div");
+            author.classList.add("author");
+            author.textContent = String(x.author);
+            let pages = document.createElement("div");
+            pages.classList.add("pages");
+            pages.textContent = `${x.numberOfPages} pages`;
+            let boolean = document.createElement("div");
+            boolean.classList.add("boolean");
+            if (x.isRead) boolean.textContent = "Already read";
+            else { boolean.textContent = "Not yet read"; boolean.style = "color: red";}
+            b.appendChild(title);
+            b.appendChild(author);
+            b.appendChild(pages);
+            b.appendChild(boolean);
+            bookGrid.appendChild(a);
+            bookGrid.appendChild(b);
+            x.isDisplayed = true;
         }
     }
 }
+
+displayBooks();
+
+let form = document.querySelector("dialog");
+let addButton = document.querySelector(".add-btn");
+addButton.addEventListener("click", () => {
+    form.showModal();
+});

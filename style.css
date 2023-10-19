@@ -85,3 +85,8 @@ img {
     background-color: rgb(85, 85, 85);
     color: white;
 }
+
+::backdrop {
+    background-color: gray;
+    opacity: 0.75;
+}
