@@ -12,7 +12,12 @@ Book.prototype.info = function(){
     if (this.isRead) str += "already read.";
     else str += "not read yet.";
     return str;
-}
+};
+
+Book.prototype.toggleReadValue = function() {
+    this.isRead = this.isRead ? false : true;
+};
+
 let myLibrary = [ 
     new Book("The Power Of Now", "Edgar Muyomba",304, false), 
     new Book("Can't Hurt Me", "David Goggins", 334, true), 
@@ -30,10 +35,9 @@ function addBookToLibrary(title, author, pages, isRead)
 
 function displayBooks()
 {
-    for (let x of myLibrary)
+    for (let i = 0; i < myLibrary.length; ++i)
     {
-        console.log(x);
-        if (!x.isDisplayed)
+        if (!myLibrary[i].isDisplayed)
         {
             let a = document.createElement("div");
             a.classList.add("image");
@@ -43,24 +47,72 @@ function displayBooks()
             let b = document.createElement("div");
             let title = document.createElement("div");
             title.classList.add("title");
-            title.textContent = String(x.title);
+            title.textContent = String(myLibrary[i].title);
             let author = document.createElement("div");
             author.classList.add("author");
-            author.textContent = String(x.author);
+            author.textContent = String(myLibrary[i].author);
             let pages = document.createElement("div");
             pages.classList.add("pages");
-            pages.textContent = `${x.numberOfPages} pages`;
+            pages.textContent = `${myLibrary[i].numberOfPages} pages`;
             let boolean = document.createElement("div");
             boolean.classList.add("boolean");
-            if (x.isRead) boolean.textContent = "Already read";
+            if (myLibrary[i].isRead) boolean.textContent = "Already read";
             else { boolean.textContent = "Not yet read"; boolean.style = "color: red";}
             b.appendChild(title);
             b.appendChild(author);
             b.appendChild(pages);
             b.appendChild(boolean);
+            
+            let btnDiv = document.createElement("div");
+            btnDiv.classList.add("btn-div");
+            
+            let toggleRead = document.createElement("button");
+            toggleRead.classList.add("toggle-read");
+            toggleRead.setAttribute("data-index", `${i}`);
+            toggleRead.textContent = "Toggle Read";
+            toggleRead.addEventListener("click", () => {
+                let i = deleteBook.getAttribute("data-index");
+                myLibrary[i].toggleReadValue();
+                if (myLibrary[i].isRead) {boolean.textContent = "Already read"; boolean.style = "color: gray";}
+                else { boolean.textContent = "Not yet read"; boolean.style = "color: red";}
+            });
+            
+            btnDiv.appendChild(toggleRead);
+            
+            let deleteBook = document.createElement("button");
+            deleteBook.classList.add("delete-book");
+            deleteBook.textContent = "DELETE";
+            deleteBook.setAttribute("data-index", `${i}`);
+            deleteBook.addEventListener("click", () => {
+                let i = deleteBook.getAttribute("data-index");
+                myLibrary.splice(i, 1);
+                let xx = document.querySelectorAll('[data-index="' + `${i}"]`);
+                for (let xxx of xx)
+                {
+                    xxx.remove();
+                }
+                let yy = document.querySelectorAll('[data-index]');
+                console.log(yy);
+                let count = 0, value = 0;
+                for (let y of yy)
+                {
+                    y.setAttribute("data-index", `${value}`);
+                    count++;
+                    if (count % 4 == 0) value++;
+                }
+
+            });
+
+            btnDiv.appendChild(deleteBook);
+            b.appendChild(btnDiv);
+            
+            a.setAttribute("data-index", `${i}`);
+            b.setAttribute("data-index", `${i}`);
+            
             bookGrid.appendChild(a);
             bookGrid.appendChild(b);
-            x.isDisplayed = true;
+
+            myLibrary[i].isDisplayed = true;
         }
     }
 }

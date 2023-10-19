@@ -155,3 +155,29 @@ dialog .head {
     align-items: center;
     margin-bottom: 15px;
 }
+
+
+.toggle-read, .delete-book {
+    font-family: 'Inter', sans-serif;
+    height: 1.5rem;
+    width: auto;
+    border: 0px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 80%;
+    margin-right: 1rem;
+}
+
+.delete-book {
+    background-color: red;
+}
+
+.delete-book:hover {
+    background-color: brown;
+    color: white;
+}
+
+.toggle-read:hover {
+    background-color: rgb(88, 88, 88);
+    color: white;
+}
