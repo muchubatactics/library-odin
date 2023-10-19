@@ -118,6 +118,7 @@ function displayBooks()
 
 displayBooks();
 
+let form = document.querySelector(".form");
 let dialog = document.querySelector("dialog");
 let addButton = document.querySelector(".add-btn");
 addButton.addEventListener("click", () => {
@@ -126,10 +127,10 @@ addButton.addEventListener("click", () => {
 
 let closeButton = document.querySelector(".close-dialog");
 closeButton.addEventListener("click", () => {
+    form.reset();
     dialog.close();
 });
 
-let form = document.querySelector(".form");
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     let title = document.getElementById("title").value;
@@ -147,5 +148,6 @@ form.addEventListener("submit", (event) => {
     }
     addBookToLibrary(title, author, pages, isReadbool);
     dialog.close();
+    form.reset();
 
 });
