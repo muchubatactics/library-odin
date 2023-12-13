@@ -1,22 +1,27 @@
-function Book(title, author, pages, isRead)
+class Book
 {
-    this.title = title;
-    this.author = author;
-    this.numberOfPages = pages;
-    this.isRead = isRead;
-    this.isDisplayed = false;
+    constructor(title, author, pages, isRead)
+    {
+        this.title = title;
+        this.author = author;
+        this.numberOfPages = pages;
+        this.isRead = isRead;
+        this.isDisplayed = false;
+    }
+
+    info()
+    {
+        let str = `${this.title} by ${this.author}, ${this.numberOfPages} pages, `;
+        if (this.isRead) str += "already read.";
+        else str += "not read yet.";
+        return str;
+    }
+
+    toggleReadValue()
+    {
+        this.isRead = this.isRead ? false : true;
+    }
 }
-
-Book.prototype.info = function(){
-    let str = `${this.title} by ${this.author}, ${this.numberOfPages} pages, `;
-    if (this.isRead) str += "already read.";
-    else str += "not read yet.";
-    return str;
-};
-
-Book.prototype.toggleReadValue = function() {
-    this.isRead = this.isRead ? false : true;
-};
 
 let myLibrary = [ 
     new Book("The Power Of Now", "Edgar Muyomba",304, false), 
