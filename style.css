@@ -181,3 +181,7 @@ dialog .head {
     background-color: rgb(88, 88, 88);
     color: white;
 }
+
+input:invalid {
+    border: 1px solid red;
+}

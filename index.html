@@ -24,15 +24,15 @@
         <form class="form">
             <div class="for-style">
                 <label for="title">Title:</label>
-                <input class="text" name="title" id="title" required>
+                <input type="text" name="title" id="title" required minlength="3" maxlength="40">
             </div>
             <div class="for-style">
                 <label for="author">Author:</label>
-                <input class="text" name="author" id="author" required>
+                <input type="text" name="author" id="author" required minlength="3" maxlength="30">
             </div>
             <div class="for-style">
                 <label for="pages">Page count:</label>
-                <input class="number" pattern="\d+" name="pages" id="pages" required>
+                <input type="number" min="1" pattern="\d+" name="pages" id="pages" required >
             </div>
             <div>
                 <legend>Have you read the book yet?</legend>
